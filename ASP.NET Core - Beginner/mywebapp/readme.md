@@ -16,3 +16,21 @@ this method is responsible for instantiating new services (MVC, Authentication, 
 
 public void Configure(IApplicationBuilder app, IHostingEnvironment env):
 This is the "Configure the stuff you loaded" method. Do specific things to set the environment up.
+
+---------
+
+# Implementing from Empty Template, 
+1. First thing is to add MVC. 
+On *Startup.cs* add:
+```CS
+services.AddMvc()
+```
+line to the *ConfigureServices* method.
+Then add 
+```CS
+app.UseMvc();
+```
+to the *Configure* method.
+
+2. Add a new folder named *Pages* to project root directory.
+3. Add a new Razor Page file (index.cshtml) and start it with the *directive* **@page**
