@@ -34,7 +34,7 @@ app.UseMvc();
 ```HTML
 <h1>Hello GSoster from the HEADER OF A RAZOR PAGE</h1>
 ```
-Now run the *dotnet* *run* command on terminal.
+Now run the *dotnet* *run* command on terminal.  
 4. Add a new file to the root directory: appsettings.json. It can hold anything that is "application specific". Example: 
 ```JS
 {
