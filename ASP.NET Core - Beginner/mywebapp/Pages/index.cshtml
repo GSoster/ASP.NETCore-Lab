@@ -1,1 +1,19 @@
 @page
+@using Microsoft.Extensions.Configuration;
+@inject IConfiguration Configuration;
+<h1>Hello GSoster from the HEADER OF A RAZOR PAGE</h1>
+
+<h2>
+    @Configuration["Message"]
+</h2>
+
+<hr>
+<p>@DateTime.Now</p>
+@{
+    var i = 2 + 2;
+}
+<p>
+2 + 2 = <b>@i</b>
+</p>
+
+
