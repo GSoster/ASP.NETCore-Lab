@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ASP.NET_Core___Beginner
+namespace myconsoleapp
 {
     class Program
     {
