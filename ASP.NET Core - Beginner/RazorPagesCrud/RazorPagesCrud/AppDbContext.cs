@@ -9,7 +9,7 @@ namespace RazorPagesCrud
         {
         }
 
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
     }
 }

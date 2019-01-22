@@ -22,8 +22,8 @@ namespace RazorPagesCrud
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //create memory storage
-            services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("name");
+            //create in-memory storage
+            services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("name"));
 
             services.AddMvc();
         }
