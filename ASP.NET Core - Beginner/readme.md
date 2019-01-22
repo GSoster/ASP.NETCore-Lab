@@ -3,7 +3,7 @@
 In this course it was taught:  
 ⋅⋅* How to install and use the .NET Core CLI, .NET Core Templates;
 
-⋅⋅* How to build an Console and Web application, add dynamically rendered HTML and work with configuration;
+⋅⋅* How to build a Console and Web application, add dynamically rendered HTML and work with configuration;
 
 ⋅⋅* Razor Pages and how to build a CRUD with them;
 
