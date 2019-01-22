@@ -2,7 +2,11 @@
 
 ![Badge](https://github.com/GSoster/ASP.NETCore-Lab/blob/master/images/badge.png)
 
-Certificate Beginner Course:
+Beginner Course:
+
+[Beginner Course Content](https://github.com/GSoster/ASP.NETCore-Lab/blob/master/ASP.NET%20Core%20-%20Beginner/readme.md)  
+Certificate:
+
 ![beginner](https://github.com/GSoster/ASP.NETCore-Lab/blob/master/images/beginner.png)
 
 Certificate Intermediate Course:
