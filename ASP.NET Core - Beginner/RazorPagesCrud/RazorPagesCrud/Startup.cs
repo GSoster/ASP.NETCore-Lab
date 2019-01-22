@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 namespace RazorPagesCrud
 {
@@ -25,12 +26,18 @@ namespace RazorPagesCrud
             //create in-memory storage
             services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("name"));
 
+            services.AddLogging();
+
             services.AddMvc();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
+            //pointing the log to different places:
+            loggerFactory.AddConsole();//if running from the command line 
+            loggerFactory.AddDebug();
+
             if (env.IsDevelopment())
             {
                 app.UseBrowserLink();

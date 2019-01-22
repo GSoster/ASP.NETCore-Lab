@@ -12,6 +12,9 @@ namespace RazorPagesCrud.Pages
     {
         private readonly AppDbContext _db;
 
+        [TempData]
+        public string Message { get; set; }
+
         public IndexModel(AppDbContext db)
         {
             _db = db;
