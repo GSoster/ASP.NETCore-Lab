@@ -5,6 +5,7 @@
 }
 
 <form method="post">
+    <a asp-page="./Create">Create</a>
     <table class="table">
         <thead>
             <tr>
@@ -18,8 +19,10 @@
                 <tr>
                     <td>@customer.Id</td>
                     <td>@customer.Name</td>
-                    <td>link to edit</td>
-                    <td>delete button</td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@customer.Id">Edit</a>
+                        <input type="submit" asp-page-handler="delete" asp-route-id="@customer.Id" value="Delete" />
+                    </td>                    
                 </tr>
             }
 
