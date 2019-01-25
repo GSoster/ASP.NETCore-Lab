@@ -5,13 +5,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreTodo.Models;
-
+using AspNetCoreTodo.Services;
 public class TodoController : Controller
 {
 
-    public IActionResult Index()
+    private readonly ITodoItemService _todoItemService;
+
+    public TodoController(ITodoItemService todoItemService)
     {
-        return Ok("TodoController");
+        _todoItemService = todoItemService;
+    }
+    public async Task<IActionResult> Index()
+    {
+        var items = await _todoItemService.GetIncompleteItemAsync();
+        var model = new TodoViewModel
+        {
+            Items = items
+        };
+        return View(model);
     }
 
 }

@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
+namespace AspNetCoreTodo.Models{
 public class TodoItem
 {
 
@@ -12,4 +13,5 @@ public class TodoItem
 
     public DateTimeOffset? DueAt { get; set; }
 
+}
 }
