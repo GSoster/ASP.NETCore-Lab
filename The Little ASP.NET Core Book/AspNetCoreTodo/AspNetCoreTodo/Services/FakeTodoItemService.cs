@@ -20,6 +20,10 @@ namespace AspNetCoreTodo.Services
             });
         }
 
+        public async Task<bool> MarkDoneAsync(Guid id)
+        {
+            return await Task.FromResult(true);
+        }
         public Task<bool> AddItemAsync(TodoItem newItem)
         {
             return Task.FromResult(true);
