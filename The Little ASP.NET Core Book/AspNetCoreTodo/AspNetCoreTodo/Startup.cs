@@ -45,7 +45,12 @@ namespace AspNetCoreTodo
 
             //add singleton (one instance for all requests) to use FakeTodoItemService as the
             // default service when a ITodoItemService is requested
-            services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+            
+            //services.AddSingleton<ITodoItemService, FakeTodoItemService>();
+
+            //To use the Database we must use another ITodoItemService.
+            // This one will be scoped what means it is going to have one instance for EACH request
+            services.AddScoped<ITodoItemService, TodoItemService>();
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
