@@ -1,23 +1,32 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Linq;//Where
+using System.Threading.Tasks;//Task<>
 using Microsoft.AspNetCore.Mvc;
 using AspNetCoreTodo.Models;
 using AspNetCoreTodo.Services;
+using Microsoft.AspNetCore.Authorization;//Authorize
+using Microsoft.AspNetCore.Identity;//userManager
+
+[Authorize]
 public class TodoController : Controller
 {
 
     private readonly ITodoItemService _todoItemService;
+    private readonly UserManager<IdentityUser> _userManager;
 
-    public TodoController(ITodoItemService todoItemService)
+    public TodoController(ITodoItemService todoItemService, UserManager<IdentityUser> userManager)
     {
         _todoItemService = todoItemService;
+        _userManager = userManager;
     }
     public async Task<IActionResult> Index()
     {
-        var items = await _todoItemService.GetIncompleteItemAsync();
+        var currentUser = await _userManager.GetUserAsync(User);
+        if (currentUser == null) return Challenge();//goes to the login screen
+
+        var items = await _todoItemService.GetIncompleteItemAsync(currentUser);
         var model = new TodoViewModel
         {
             Items = items

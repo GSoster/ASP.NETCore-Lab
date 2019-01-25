@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AspNetCoreTodo.Models;
 using AspNetCoreTodo.Data;
 using Microsoft.EntityFrameworkCore;
-
+using Microsoft.AspNetCore.Identity;//IdentityUser user
 namespace AspNetCoreTodo.Services
 {
     public class TodoItemService : ITodoItemService
@@ -18,9 +18,9 @@ namespace AspNetCoreTodo.Services
         }
                 
 
-        public async Task<TodoItem[]> GetIncompleteItemAsync()
+        public async Task<TodoItem[]> GetIncompleteItemAsync(IdentityUser user)
         {
-            return await _context.Items.Where(x => x.IsDone == false)
+            return await _context.Items.Where(x => x.IsDone == false && x.UserId == user.Id)
                 .ToArrayAsync();
         }
 
