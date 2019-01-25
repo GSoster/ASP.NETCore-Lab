@@ -44,7 +44,10 @@ public class TodoController : Controller
             return RedirectToAction("Index");
         }
 
-        var successful = await _todoItemService.AddItemAsync(todoItem);
+        var currentUser = await _userManager.GetUserAsync(User);
+        if (currentUser == null) { return Challenge();}
+
+        var successful = await _todoItemService.AddItemAsync(todoItem, currentUser);
         if(!successful)
         {
             return BadRequest("Could not add item");
@@ -55,12 +58,16 @@ public class TodoController : Controller
 
     public async Task<IActionResult> MarkDone(Guid id)
     {
+
+        var currentUser = await _userManager.GetUserAsync(User);
+        if (currentUser == null) {return Challenge();}
+
         if (id == Guid.Empty)
         {
             return RedirectToAction("Index");
         }
 
-        var successful = await _todoItemService.MarkDoneAsync(id);
+        var successful = await _todoItemService.MarkDoneAsync(id, currentUser);
         if (!successful)
         {
             return BadRequest("Could not mark item as done");
