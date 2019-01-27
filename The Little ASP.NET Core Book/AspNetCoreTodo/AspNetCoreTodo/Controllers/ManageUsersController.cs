@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
@@ -20,13 +21,21 @@ namespace AspNetCoreTodo.Controllers{
             _userManager = userManager;
         }
 
-        /* public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var admins = (await _userManager
-            .GetUsersInRoleAsync(Constant.AdministratorRole)
-            //.ToArray();
-            )
-        }*/
+                .GetUsersInRoleAsync("Administrator"))
+                .ToArray();
+
+            var everyone = await _userManager.Users
+                .ToArrayAsync();
+            var model = new ManageUsersViewModel
+            {
+                Administrators = admins,
+                Everyone = everyone
+            };
+            return View(model);
+        }
 
 
 
