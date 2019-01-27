@@ -1,8 +1,8 @@
 using System;
 
-namespace AspNetCoreTodo.Constants
+namespace AspNetCoreTodo
 {
-    public static class Constant
+    public static class Constants
     {
         public const string AdministratorRole = "Administrator";
     }    

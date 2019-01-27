@@ -7,10 +7,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using AspNetCoreTodo.Models;
 using Microsoft.EntityFrameworkCore;
-using AspNetCoreTodo.Constants;
 
 namespace AspNetCoreTodo.Controllers{
-    [Authorize(Roles = Constant.AdministratorRole)]
+    [Authorize(Roles = Constants.AdministratorRole)]
     public class ManageUsersController : Controller
     {
         
