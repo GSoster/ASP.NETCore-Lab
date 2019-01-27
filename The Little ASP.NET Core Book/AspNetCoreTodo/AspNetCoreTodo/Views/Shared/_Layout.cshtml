@@ -28,6 +28,7 @@
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
                     <partial name="_LoginPartial" />
+                   
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
@@ -39,6 +40,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Todo" asp-action="Index">My to-dos</a>
                         </li>
                     </ul>
+                     @await Html.PartialAsync("_AdminActionsPartial")
                 </div>
             </div>
         </nav>
