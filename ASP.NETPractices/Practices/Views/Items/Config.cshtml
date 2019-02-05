@@ -1,0 +1,14 @@
+@page
+@inject Microsoft.Extensions.Configuration.IConfiguration Configuration
+<h2>Items Configuration</h2>
+
+<p>
+    Number of items per page: @Configuration["NumberOfItemsPerPage"];
+</p>
+<p>
+    <!-- will  come from Development-->
+    Max Quantity Of Items Per Client: @Configuration["MaxQuantityOfItemsPerClient"];
+</p>
+<p>
+    Should Display Add On First Page: @Configuration["ShouldDisplayAddOnFirstPage"];
+</p>

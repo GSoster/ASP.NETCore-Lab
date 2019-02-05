@@ -1,6 +1,7 @@
 using System;
 using Microsoft.AspNetCore.Mvc;
 using Practices.Services;
+using System.Threading.Tasks;
 
 namespace Practices.Controllers
 {
@@ -20,6 +21,13 @@ namespace Practices.Controllers
             //return View();//second version
             return Ok(_repository.GetAllItems());//third version
         }
+
+
+        public async Task<IActionResult> Config()
+        {
+            return View();
+        }
+
 
     }
 }
