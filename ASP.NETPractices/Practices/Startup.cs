@@ -10,7 +10,7 @@ using Practices.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
-
+using Practices.Middlewares;
 namespace Practices
 {
     public class Startup
@@ -33,6 +33,7 @@ namespace Practices
             
 
             services.AddSingleton<IItemService, LocalItemService>();
+            services.AddLogging();
             _logger.LogInformation("Added LocalItemService to services");            
 
             services.AddMvc();
@@ -55,6 +56,11 @@ namespace Practices
                 s.Stop();
                 _logger.LogInformation("##### Elapsed request Milliseconds: " + s.ElapsedMilliseconds);
             });
+
+
+
+            app.UseMiddleware<RequestTimeLoggerMiddleware>();
+
 
             /* //Playing with Middlewares
             app.Use(async (context, next)=>{
