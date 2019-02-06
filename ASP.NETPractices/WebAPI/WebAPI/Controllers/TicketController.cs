@@ -32,5 +32,18 @@ namespace WebAPI.Controllers
             return _context.TicketItems.AsNoTracking().ToList();
         }
 
+
+        [HttpGet("{id}", Name = "GetTicket")]
+        public IActionResult GetById(long Id)
+        {
+            //FirstDefault returns null (default) if it cant find
+            var ticket = _context.TicketItems.FirstOrDefault(t => t.Id == Id);
+            if (ticket == null)
+            {
+                return NotFound();                
+            }
+            return new ObjectResult(ticket);
+        }
+
     }
 }
