@@ -58,5 +58,27 @@ namespace WebAPI.Controllers
             return CreatedAtRoute("GetTicket", new { Id = ticket.Id }, ticket);
         }
 
+        [HttpPut("{id}")]
+        public IActionResult Update(long Id, [FromBody]TicketItem ticket)
+        {
+            if (ticket.Id != Id || ticket == null)
+            {
+                return BadRequest();
+            }
+
+            var dbTicket = _context.TicketItems.FirstOrDefault(t => t.Id == Id);
+            if (dbTicket == null)
+            {
+                return NotFound();
+            }
+            dbTicket.Concert = ticket.Concert;
+            dbTicket.Available = ticket.Available;
+            dbTicket.Artist = ticket.Artist;
+            _context.TicketItems.Update(dbTicket);
+            _context.SaveChanges();
+            return new NoContentResult();
+
+        }
+
     }
 }
