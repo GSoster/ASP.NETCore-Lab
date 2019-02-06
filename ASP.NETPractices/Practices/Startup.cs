@@ -58,10 +58,13 @@ namespace Practices
             });
 
 
+            
+
 
             //app.UseMiddleware<RequestTimeLoggerMiddleware>(); //since I added an extension method now I can just call:
             app.UseRequestTimeLoggerMiddleware();
 
+            app.UseDeveloperInfoMiddleware();
 
             /* //Playing with Middlewares
             app.Use(async (context, next)=>{
