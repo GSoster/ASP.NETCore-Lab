@@ -8,6 +8,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Practices.Services;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System.Diagnostics;
 
 namespace Practices
 {
@@ -15,10 +17,12 @@ namespace Practices
     {
 
 
+        private readonly ILogger _logger;
         public IConfiguration Configuration{get;}
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, ILogger<Startup> logger)
         {
             Configuration = configuration;  
+            _logger = logger;
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -26,7 +30,11 @@ namespace Practices
         public void ConfigureServices(IServiceCollection services)
         {
 
+            
+
             services.AddSingleton<IItemService, LocalItemService>();
+            _logger.LogInformation("Added LocalItemService to services");            
+
             services.AddMvc();
         }
 
@@ -38,6 +46,16 @@ namespace Practices
                 app.UseDeveloperExceptionPage();
             }        
             
+
+                        
+            app.Use(async(context, next)=>{
+                var s = new Stopwatch();
+                s.Start();
+                await next();
+                s.Stop();
+                _logger.LogInformation("##### Elapsed request Milliseconds: " + s.ElapsedMilliseconds);
+            });
+
             /* //Playing with Middlewares
             app.Use(async (context, next)=>{
                 await context.Response.WriteAsync("1: before");
@@ -55,10 +73,10 @@ namespace Practices
                 await context.Response.WriteAsync("Ending request");
             });*/
 
-            /* app.UseMvc(routes => {
+            app.UseMvc(routes => {
                 routes.MapRoute("default",
                 template: "{controller=Items}/{action=Index}/{id?}");
-            });*/
+            });
 
             /*app.Run(async (context) =>
             {
