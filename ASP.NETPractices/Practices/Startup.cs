@@ -38,12 +38,27 @@ namespace Practices
                 app.UseDeveloperExceptionPage();
             }        
             
-            
+            /* //Playing with Middlewares
+            app.Use(async (context, next)=>{
+                await context.Response.WriteAsync("1: before");
+                await next();
+                await context.Response.WriteAsync("1: after");
+            });
 
-            app.UseMvc(routes => {
+            app.Use(async (context, next)=>{
+                await context.Response.WriteAsync("2: before");
+                await next();
+                await context.Response.WriteAsync("2: after");
+            });
+
+            app.Run(async(context)=>{
+                await context.Response.WriteAsync("Ending request");
+            });*/
+
+            /* app.UseMvc(routes => {
                 routes.MapRoute("default",
                 template: "{controller=Items}/{action=Index}/{id?}");
-            });
+            });*/
 
             /*app.Run(async (context) =>
             {
