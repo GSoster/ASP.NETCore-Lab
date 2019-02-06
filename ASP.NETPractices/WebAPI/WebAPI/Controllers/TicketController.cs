@@ -80,5 +80,18 @@ namespace WebAPI.Controllers
 
         }
 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(long Id)
+        {
+            var ticket = _context.TicketItems.FirstOrDefault(t => t.Id == Id);
+            if (ticket == null)
+            {
+                return NotFound();
+            }
+            _context.TicketItems.Remove(ticket);
+            _context.SaveChanges();
+            return new NoContentResult();
+        }
+
     }
 }
