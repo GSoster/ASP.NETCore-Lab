@@ -14,6 +14,6 @@ namespace WebAPI
 
         }
 
-        DbSet<TicketItem> TicketItems { get; set; }
+        public DbSet<TicketItem> TicketItems { get; set; }
     }
 }
