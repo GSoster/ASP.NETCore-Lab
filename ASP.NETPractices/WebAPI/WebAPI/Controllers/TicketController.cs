@@ -44,6 +44,19 @@ namespace WebAPI.Controllers
             }
             return new ObjectResult(ticket);
         }
+        
+        [HttpPost]
+        public IActionResult Create([FromBody] TicketItem ticket)
+        {
+            if (ticket == null)
+            {
+                return BadRequest();//400
+            }
+            _context.TicketItems.Add(ticket);
+            _context.SaveChanges();
+            //Create Route returns the route to the new created item
+            return CreatedAtRoute("GetTicket", new { Id = ticket.Id }, ticket);
+        }
 
     }
 }
