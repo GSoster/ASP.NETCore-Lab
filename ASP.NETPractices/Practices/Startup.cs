@@ -59,7 +59,8 @@ namespace Practices
 
 
 
-            app.UseMiddleware<RequestTimeLoggerMiddleware>();
+            //app.UseMiddleware<RequestTimeLoggerMiddleware>(); //since I added an extension method now I can just call:
+            app.UseRequestTimeLoggerMiddleware();
 
 
             /* //Playing with Middlewares
