@@ -14,3 +14,9 @@ Certificate Intermediate Course:
 
 Certificate Advanced Course:
 ![advanced](https://github.com/GSoster/ASP.NETCore-Lab/blob/master/images/advanced.png)
+
+
+Some reading material:
+
+https://github.com/LadyNaggaga?tab=repositories
+https://github.com/dotnet-presentations
